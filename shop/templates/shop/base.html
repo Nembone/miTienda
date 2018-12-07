@@ -1,0 +1,45 @@
+{% load statics %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta charset="utf/8" />
+    <title>{% block title%} Mi tienda {%endblock%}</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div id="header">
+        <a href="/" class="logo">Mi tienda </a>
+    </div>
+
+    <div id="subheader">
+        <div class="cart">
+            {% with total_items=cart|length %}
+                {% if cart|lenght > 0 %}
+                    Tu carro >
+                    <a href="{% url "cart:cart_details" %}">
+                        {{ total_items }} items {{ total_items|pluralize}}, ${{ cart.get total_items}}
+                    </a>
+                {% else %}
+                 Tu carro esta vacio
+                {% endif %}
+            
+            {% endwith %}
+    </div>
+    <div id="content">
+        {% bock content %}
+        {% endblock  %}
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+</html>
