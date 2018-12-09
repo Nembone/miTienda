@@ -1,6 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Product
 from cart.forms import CartAddProductForm
+from .forms import LoginForm
+from django.contrib.auth import authenticate, login, logout
+
 
 
 def product_list(request, category_slug=None):
@@ -22,3 +25,14 @@ def product_detail(request, id, slug):
                   'shop/product/detail.html',
                   {'product': product,
                    'cart_product_form': cart_product_form})
+
+
+def ingreso(request):
+    form=LoginForm(request.POST or None)
+    if form.is_valid():
+        data=form.cleaned_data
+        user=authenticate(username=data.get("username"),password=data.get("password"))
+        if user is not None:
+            login(request,user)
+            return redirect('/')
+    return render(request,'login.html',{'form':form,'titulo':'Ingreso Usuario',})

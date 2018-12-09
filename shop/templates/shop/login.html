@@ -1,0 +1,73 @@
+{% extends "shop/base.html" %}
+
+{% load staticfiles %}
+
+{% block principal %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+<form class="formu" method="POST">
+    
+    <h1>Login Usuario</h1>
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Ingresar" class="btn-enviar">
+    <a href="/olvido/">Quieres recuperar tu password?</a>
+    <p> -- O -- </p>
+
+    <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '384843808722039',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v3.2'
+          });
+            
+          FB.AppEvents.logPageView();   
+            
+        };
+      
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+         
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+            var accessToken = response.authResponse.accessToken;
+        } 
+        } );
+
+      </script>
+    
+    
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.2';
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+
+   
+<div class="center">
+    <div  class="fb-login-button" 
+            data-width="25"
+            data-max-rows="1" 
+            data-size="large" 
+            data-button-type="login_with" 
+            data-show-faces="false" 
+            data-auto-logout-link="true" 
+            data-use-continue-as="true">
+    </div>
+
+</div>  
+
+</form>
+{% endblock %}
