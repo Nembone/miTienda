@@ -3,7 +3,12 @@
 body { 
     margin:0;
     padding:0;
-    font-family:helvetica, sans-serif; 
+    font-family:helvetica, sans-serif;
+    background: #16222A;  
+    background: -webkit-linear-gradient(to right, rgb(163, 205, 228), rgb(145, 183, 207));  
+    background: linear-gradient(to right,rgb(209, 226, 235), rgb(145, 183, 207)); 
+    
+    text-align: center;
 }
 
 h1, h2, h3, h4, h5 , h6 { 
@@ -123,7 +128,7 @@ ul.errorlist {
 }
 
 #subheader {
-    background:#ececec;
+    background:#797979;
     color:#444;
     padding:15px 100px;
     overflow:auto;
@@ -314,3 +319,67 @@ ul.errorlist {
 .recommendations.cart img {
     width:120px;
 }
+
+/* CSS De EXAMEN DUOC */
+
+.logo2 .word1 {
+    color: #0b1829;
+    margin-right: -38px;
+    transform: rotateY(180deg);
+    display: inline-block;
+    z-index: 10;
+  }
+  .logo2 .word1:before {
+    right: -4px;
+    top: -9px;
+
+  }
+  .logo2 .word1:after {
+    left: 17px;
+    bottom: -15px;
+  
+  }
+  
+  /* 2nd word */
+  .logo2 .word2 {
+    z-index: 0;
+  }
+  .logo2 .word2:before {
+    left: -4px;
+    top: -6px;
+    border-top-color: #3A6073;
+    border-left-color: #3A6073;
+  }
+  .logo2 .word2:after {
+    right: -4px;  
+    bottom: 4px;
+    border-bottom-color: #3A6073;
+    border-right-color: #3A6073;
+  }
+  
+
+  .logo2 {
+    font: 84px 'Arial Narrow', sans-serif;
+    color: #fefefe;
+    text-transform: uppercase;
+    letter-spacing: -4px;
+  }
+  
+  /* Ambas palabras */
+  .logo2 span {
+    position: relative;
+  }
+  .logo2 span:before,
+
+  .logo2 span:after {
+    content: '';
+    position: absolute;
+    border-width: 32px;
+    border-style: solid;
+    border-color: transparent;
+    height: 0;
+    z-index: 10;
+  }
+  
+  
+  

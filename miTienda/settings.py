@@ -46,7 +46,18 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'django.contrib.sites',
+    'djmoney',
+    'pwa',
+    'webpush',
 )
+
+WEBPUSH_SETTINGS = {
+    'VAPID_PUBLIC_KEY': 'Vapid Public Key',
+    'VAPID_PRIVATE_KEY' : 'Vapid Private Key',
+    'VAPID_ADMIN_EMAIL' : 'admin@example.com',
+}
+
+
 
 SITE_ID = 1
 
@@ -132,7 +143,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    '/miTienda/shop/static',
+)
+
 STATIC_URL = '/static/'
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'shop/static/js', 'serviceworker.js')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
